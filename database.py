@@ -19,10 +19,7 @@ class DataBase:
         self.file.close()
 
     def get_user(self, email):
-        if email in self.users:
-            return self.users[email]
-        else:
-            return -1
+        return self.users[email] if email in self.users else -1
 
     def add_user(self, email, password, name):
         if email.strip() not in self.users:
@@ -42,7 +39,10 @@ class DataBase:
     def save(self):
         with open(self.filename, "w") as f:
             for user in self.users:
-                f.write(user + ";" + self.users[user][0] + ";" + self.users[user][1] + ";" + self.users[user][2] + "\n")
+                f.write(
+                    f'{user};{self.users[user][0]};{self.users[user][1]};{self.users[user][2]}'
+                    + "\n"
+                )
 
     @staticmethod
     def get_date():
