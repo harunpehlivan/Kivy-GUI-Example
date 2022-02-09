@@ -67,9 +67,9 @@ class MainWindow(Screen):
 
     def on_enter(self, *args):
         password, name, created = db.get_user(self.current)
-        self.n.text = "Account Name: " + name
-        self.email.text = "Email: " + self.current
-        self.created.text = "Created On: " + created
+        self.n.text = f'Account Name: {name}'
+        self.email.text = f'Email: {self.current}'
+        self.created.text = f'Created On: {created}'
 
 
 class WindowManager(ScreenManager):
